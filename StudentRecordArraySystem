@@ -1,0 +1,113 @@
+import java.util.Scanner;
+
+public class StudentApp {
+    public static void main(String[] args) {
+
+Scanner sc = new Scanner(System.in);
+
+    String[] name = new String[10];
+       double[][] grade = new double[10][10];
+        double[] avg = new double[10];
+
+             System.out.println("Enter 10 students and grades");
+
+       for (int i = 0; i < 10; i++) {
+
+            System.out.print("\nStudent Name: ");
+            name[i] = sc.nextLine();
+
+            System.out.print("Programming: ");
+            grade[i][0] = sc.nextDouble();
+
+            System.out.print("CWTS: ");
+            grade[i][1] = sc.nextDouble();
+
+            System.out.print("Discrete Structure: ");
+            grade[i][2] = sc.nextDouble();
+
+            System.out.print("Oral Com: ");
+            grade[i][3] = sc.nextDouble();
+
+            System.out.print("Pathfit: ");
+            grade[i][4] = sc.nextDouble();
+
+            System.out.print("GenMath: ");
+            grade[i][5] = sc.nextDouble();
+
+            System.out.print("Technopreneurship: ");
+            grade[i][6] = sc.nextDouble();
+
+            System.out.print("Understanding the Self: ");
+            grade[i][7] = sc.nextDouble();
+
+            System.out.print("Basic Electronics: ");
+            grade[i][8] = sc.nextDouble();
+
+            System.out.print("Keyboarding: ");
+            grade[i][9] = sc.nextDouble();
+
+            sc.nextLine(); 
+
+
+     for (int j = 0; j < 9; j++) {
+          for (int k = 0; k < 9; k++) {
+              if (grade[i][k] > grade[i][k + 1]) {
+                    double temp = grade[i][k];
+                     grade[i][k] = grade[i][k + 1];
+                     grade[i][k + 1] = temp;
+                    }
+                }
+            }
+
+
+            double sum = 0;
+            for (int j = 0; j < 10; j++) {
+                sum += grade[i][j];
+            }
+            avg[i] = sum / 10;
+        }
+
+
+        System.out.println("\nSorted Grades per Student:");
+        for (int i = 0; i < 10; i++) {
+            System.out.print(name[i] + ": ");
+            for (int j = 0; j < 10; j++) {
+                System.out.print(grade[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+
+        System.out.println("\nStudent Averages:");
+        for (int i = 0; i < 10; i++) {
+            System.out.println(name[i] + " = " + avg[i]);
+        }
+
+  System.out.print("\nEnter name to search: ");
+    String search = sc.nextLine();
+
+       boolean found = false;
+
+        for (int i = 0; i < 10; i++) {
+            if (name[i].equalsIgnoreCase(search)) {
+                System.out.println("\nStudent found!");
+                System.out.println("Name: " + name[i]);
+                System.out.println("Average: " + avg[i]);
+
+                System.out.print("Grades: ");
+                for (int j = 0; j < 10; j++) {
+                    System.out.print(grade[i][j] + " ");
+        }
+
+          found = true;
+          break;
+            }
+        }
+
+                 if (!found) {
+                    System.out.println("Student not found.");
+        }
+
+        sc.close();
+    }
+}
